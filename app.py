@@ -6,7 +6,8 @@ from viral_score import predict_viral_score
 import database
 import sqlite3
 import pandas as pd
-from agent import generate_post, generate_caption, predict_engagement, adapt_post
+from agent import generate_post, generate_caption, predict_engagement, adapt_post, generate_weekly_calendar, generate_strategy, generate_monthly_calendar
+
 
 
 st.set_page_config(page_title="Autonomous Social AI Agent")
@@ -75,5 +76,72 @@ df = pd.read_sql("SELECT * FROM posts", conn)
 
 if not df.empty:
     st.dataframe(df)
+
+    st.subheader("🔥 Engagement Score Trend")
+
+    # Convert score to numeric
+    df["score"] = pd.to_numeric(df["score"], errors="coerce")
+
+    # Plot live chart
+    st.line_chart(df["score"])
+    st.subheader("📱 Platform Engagement Comparison")
+
+# Split platforms stored as comma-separated values
+platform_data = []
+
+for _, row in df.iterrows():
+    platforms = row["platform"].split(",")
+    for p in platforms:
+        platform_data.append({
+            "platform": p.strip(),
+            "score": row["score"]
+        })
+
+platform_df = pd.DataFrame(platform_data)
+
+if not platform_df.empty:
+    avg_scores = platform_df.groupby("platform")["score"].mean()
+    st.bar_chart(avg_scores)
+
+
 else:
     st.write("No posts scheduled yet.")
+st.subheader("🗓 Weekly Content Planner")
+
+try:
+    df["time"] = pd.to_datetime(df["time"], errors="coerce")
+    df["day"] = df["time"].dt.day_name()
+
+    posts_per_day = df.groupby("day").size()
+
+    st.bar_chart(posts_per_day)
+
+except:
+    st.write("Time format not recognized for weekly chart.")
+st.subheader("🗓 Auto Weekly Content Calendar")
+
+if st.button("Generate Weekly Plan"):
+    weekly_plan = generate_weekly_calendar(
+        st.session_state.get("insights", "")
+    )
+
+    for day_plan in weekly_plan:
+        st.write(day_plan)
+st.subheader("📈 AI Content Strategy")
+
+if st.button("Get Strategy Suggestions"):
+    strategies = generate_strategy(
+        st.session_state.get("insights", "")
+    )
+
+    for tip in strategies:
+        st.write("✅", tip)
+st.subheader("📅 30-Day AI Content Calendar")
+
+if st.button("Generate 30-Day Plan"):
+    monthly_plan = generate_monthly_calendar(
+        st.session_state.get("insights", "")
+    )
+
+    for post in monthly_plan:
+        st.write(post)

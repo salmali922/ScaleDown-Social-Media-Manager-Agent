@@ -35,3 +35,50 @@ def predict_engagement(post):
 
 def adapt_post(post, platform):
     return post + f"\nOptimized for {platform}"
+def generate_weekly_calendar(context):
+    topics = [
+        "AI productivity tips",
+        "Coding tutorial",
+        "Career motivation",
+        "Tech industry trends",
+        "Learning resources",
+        "Developer tips",
+        "Future tech discussion"
+    ]
+
+    calendar = []
+    for i, topic in enumerate(topics):
+        calendar.append(f"Day {i+1}: Post about {topic}")
+
+    return calendar
+def generate_strategy(context):
+    suggestions = [
+        "Post tutorials during evening peak engagement.",
+        "Focus on reels and short videos.",
+        "Increase motivational content mid-week.",
+        "Use AI tool recommendations for higher clicks.",
+        "Post career tips on weekends."
+    ]
+
+    return suggestions
+def generate_monthly_calendar(context):
+    themes = [
+        "AI productivity",
+        "Coding tutorials",
+        "Career advice",
+        "Tech trends",
+        "Learning tips",
+        "Developer motivation",
+        "Startup insights",
+        "AI tools",
+        "Programming hacks",
+        "Industry news"
+    ]
+
+    calendar = []
+
+    for day in range(30):
+        topic = themes[day % len(themes)]
+        calendar.append(f"Day {day+1}: Post about {topic}")
+
+    return calendar
