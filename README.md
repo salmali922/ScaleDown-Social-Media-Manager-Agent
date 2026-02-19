@@ -104,6 +104,19 @@ Content Calendar Generation
 
 ---
 
+## System Modules:
+
+1. Compression Engine
+2. Post Generation Engine
+3. Engagement Prediction Engine
+4. Analytics Engine
+5. Strategy Engine
+6. Scheduling Engine
+7. Visualization Layer
+
+---
+
+
 ## ▶️ Run Locally
 
 Clone repo:
