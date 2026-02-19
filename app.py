@@ -2,7 +2,7 @@ import streamlit as st
 from compressor import compress_context
 from agent import generate_post, adapt_post
 from scheduler import schedule_post
-from viral_score import predict_viral_score
+from viral_score import predict_engagement
 import database
 import sqlite3
 import pandas as pd
