@@ -75,16 +75,22 @@ conn = sqlite3.connect("posts.db")
 df = pd.read_sql("SELECT * FROM posts", conn)
 
 if not df.empty:
+
+    df["score"] = pd.to_numeric(df["score"], errors="coerce")
+    df = df.dropna(subset=["score"])
+
     st.dataframe(df)
 
-    st.subheader("🔥 Engagement Score Trend")
-
-    # Convert score to numeric
-    df["score"] = pd.to_numeric(df["score"], errors="coerce")
-
-    # Plot live chart
+    st.subheader("🔥 Engagement Trend")
     st.line_chart(df["score"])
-    st.subheader("📱 Platform Engagement Comparison")
+
+    st.subheader("📱 Platform Comparison")
+    platform_avg = df.groupby("platform")["score"].mean()
+    st.bar_chart(platform_avg)
+
+else:
+    st.write("No posts scheduled yet.")
+
 
 # Split platforms stored as comma-separated values
 platform_data = []
@@ -109,12 +115,11 @@ else:
 st.subheader("🗓 Weekly Content Planner")
 
 try:
-    df["time"] = pd.to_datetime(df["time"], errors="coerce")
-    df["day"] = df["time"].dt.day_name()
+   df["time"] = pd.to_datetime(df["time"], errors="coerce", utc=True)
 
-    posts_per_day = df.groupby("day").size()
-
-    st.bar_chart(posts_per_day)
+   df["day"] = df["time"].dt.day_name()
+   posts_per_day = df.groupby("day").size()
+   st.bar_chart(posts_per_day)
 
 except:
     st.write("Time format not recognized for weekly chart.")
