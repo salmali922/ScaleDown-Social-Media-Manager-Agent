@@ -12,6 +12,8 @@ This system goes beyond simple schedulers by learning audience behavior and adap
 
 🔗 GitHub Repository: https://github.com/salmali922/ScaleDown-Social-Media-Manager-Agent
 
+🔗 Connect on LinkedIn: https://www.linkedin.com/in/salmali-samanta-b51817284/
+
 ---
 
 ## 📌 Features
@@ -85,21 +87,37 @@ It acts as an **AI social media assistant**, not just a scheduler.
 
 
 Audience History Input
+
 ↓
+
 Insight Compression
+
 ↓
+
 Post Generation
+
 ↓
+
 Caption Generation
+
 ↓
+
 Engagement Prediction
+
 ↓
+
 Platform Adaptation
+
 ↓
+
 Scheduling
+
 ↓
+
 Analytics Dashboard
+
 ↓
+
 Content Calendar Generation
 
 
@@ -149,15 +167,10 @@ Railway
 
 📈 Future Improvements
 
-Direct API posting to platforms
-
 Trend detection integration
 
 Comment auto-response
 
-Auto A/B testing
-
-Advanced ML engagement prediction
 
 🤝 Contribution
 
@@ -169,17 +182,7 @@ Contributions and suggestions are welcome.
 Salmali Samanta
 CSE-DS Student | AI & Automation Enthusiast
 
-Connect on LinkedIn: https://www.linkedin.com/in/salmali-samanta-b51817284/
-
 
 ---
 
-## ✅ After Adding README
 
-Run:
-
-```bash
-git add README.md
-git commit -m "Updated README with analytics & calendar features"
-git push
-Streamlit will auto-update.
