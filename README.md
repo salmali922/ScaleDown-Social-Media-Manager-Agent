@@ -8,7 +8,7 @@ This system goes beyond simple schedulers by learning audience behavior and adap
 ---
 
 ## 🚀 Live Demo
-🔗 Live App: [Add Streamlit link here]  
+🔗 Live App: https://scaledown-social-media-manager-agent-gt7yfaefh5dcnl4abptnsw.streamlit.app/
 🔗 GitHub Repository: https://github.com/salmali922/ScaleDown-Social-Media-Manager-Agent
 
 ---
